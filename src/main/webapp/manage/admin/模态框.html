@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+</head>
+<style>
+   .model-card {
+        transition: 0.5s linear;
+        background: white;
+        opacity: 0.90;
+        max-width: 20%;
+        color: rgb(87, 87, 87);
+        margin-left: 40%;
+        margin-top: 13%;
+        text-align: center;
+        z-index: 200;
+        position: fixed;
+        left: 0;
+        top: 0;
+        /* display: none; */
+    }
+
+    .model-card-container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .upload-img:hover {
+        cursor: pointer;
+    }
+
+    .menu-group {
+        height: 4rem;
+        width: 50rem;
+        float: right;
+        /* border: 1px solid lightgray; */
+        /* background-color: rgb(248, 248, 248); */
+    }
+</style>
+<body>
+     <!-- 弹模态框 -->
+     <div class="model-card shadow" id="upload-model-card">
+        <div class="model-card-container">
+            <div>
+                导出文件
+            </div>
+            <hr />
+            <div>
+                <img id="upload-img" class="upload-img" src="../../img/upload-pic.png" width="40%" />
+            </div>
+        </div>
+        <input id="upload-img-inputfile" type="file" style="display: none;" />
+    </div>
+    
+</body>
+</html>

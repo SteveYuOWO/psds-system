@@ -1,0 +1,71 @@
+/* 全局设置 */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+a {
+  color: rgb(105, 105, 105);
+}
+a:hover {
+  color: rgb(41, 41, 41);
+  text-decoration: none;
+}
+/* 图片适配 */
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* 个性 */
+.container {
+  max-width: 1000px;
+}
+.card:hover {
+  border: 3px solid rgb(255, 205, 167);
+}
+.card-body:hover {
+  background-color: #e2e2e2;
+}
+
+#title-bar {
+  height: 200px;
+  vertical-align: middle;
+  background-image: url('../img/title-bg.png');
+}
+#title {
+  vertical-align: middle;
+  color: white;
+  font-size: 2em;
+  margin-top: 2.1em;
+}
+
+#card-container {
+  margin-top: 80px;
+}
+
+
+.nav-text {
+  font-size: 1.1em;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+  #title {
+    margin-top: 1em;
+  }
+  .card-deck .card {
+    max-width: calc(33.3333% - 30px);
+    min-width: calc(33.3333% - 30px);
+  }
+}

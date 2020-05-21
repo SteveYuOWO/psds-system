@@ -1,0 +1,25 @@
+#frame-container {
+    margin: 0 auto;
+    margin-top: 7%;
+    max-width: 700px;
+    height: 400px;
+}
+body {
+    background-color: rgb(255, 251, 244);
+}
+.full-height {
+    height: 100%;
+}
+.bg-shadow {
+    background-color: rgb(252, 252, 252);
+}
+
+@media(max-width: 768px) {
+    button {
+        width: 100%;
+    }
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
