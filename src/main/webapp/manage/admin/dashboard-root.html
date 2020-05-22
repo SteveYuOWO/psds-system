@@ -85,132 +85,28 @@
                 <th>邮箱</th>
                 <th>报考专业</th>
                 <th>个人简介</th>
-                <th>志愿</th>
+                <th>志愿1</th>
+                <th>志愿2</th>
+                <th>志愿3</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>20170026</td>
-                <td>steveyu</td>
-                <td>littlepageprogram@163.com</td>
-                <td>软件工程</td>
-                <td>热爱生活，热爱代码</td>
-                <td>周平老师</td>
+              <c:forEach  var="element" items="${ students }">
+                <tr>
+                  <td class="hidden">${element.id}</td>
+                  <td>${element.stuNum}</td>
+                  <td>${element.name}</td>
+                  <td>${element.email}</td>
+                  <td>${element.major}</td>
+                  <td>${element.info}</td>
+                  <td>${element.chooseTeacher1 == 0 ? "未选择" : element.chooseTeacher}</td>
+                  <td>${element.chooseTeacher2 == 0 ? "未选择" : element.chooseTeacher}</td>
+                  <td>${element.chooseTeacher3 == 0 ? "未选择" : element.chooseTeacher}</td>
                 <td>
-                  <a href="#" class="prem-1"><img width="23px" src="../../img/pencil.png" /> </a>
-                  <a href="#"><img width="23px" src="../../img/delete.png" /></a>
-                </td>
-              </tr>
-              <tr>
-                <td>20170026</td>
-                <td>steveyu</td>
-                <td>littlepageprogram@163.com</td>
-                <td>软件工程</td>
-                <td>热爱生活，热爱代码</td>
-                <td>周平老师</td>
-                <td>
-                  <a href="#" class="prem-1"><img width="23px" src="../../img/pencil.png" /> </a>
-                  <a href="#"><img width="23px" src="../../img/delete.png" /></a>
-                </td>
-              </tr>
-              <tr>
-                <td>20170026</td>
-                <td>steveyu</td>
-                <td>littlepageprogram@163.com</td>
-                <td>软件工程</td>
-                <td>热爱生活，热爱代码</td>
-                <td>周平老师</td>
-                <td>
-                  <a href="#" class="prem-1"><img width="23px" src="../../img/pencil.png" /> </a>
-                  <a href="#"><img width="23px" src="../../img/delete.png" /></a>
-                </td>
-              </tr>
-              <tr>
-                <td>20170026</td>
-                <td>steveyu</td>
-                <td>littlepageprogram@163.com</td>
-                <td>软件工程</td>
-                <td>热爱生活，热爱代码</td>
-                <td>周平老师</td>
-                <td>
-                  <a href="#" class="prem-1"><img width="23px" src="../../img/pencil.png" /> </a>
-                  <a href="#"><img width="23px" src="../../img/delete.png" /></a>
-                </td>
-              </tr>
-              <tr>
-                <td>20170026</td>
-                <td>steveyu</td>
-                <td>littlepageprogram@163.com</td>
-                <td>软件工程</td>
-                <td>热爱生活，热爱代码</td>
-                <td>周平老师</td>
-                <td>
-                  <a href="#" class="prem-1"><img width="23px" src="../../img/pencil.png" /> </a>
-                  <a href="#"><img width="23px" src="../../img/delete.png" /></a>
-                </td>
-              </tr>
-              <tr>
-                <td>20170026</td>
-                <td>steveyu</td>
-                <td>littlepageprogram@163.com</td>
-                <td>软件工程</td>
-                <td>热爱生活，热爱代码</td>
-                <td>周平老师</td>
-                <td>
-                  <a href="#" class="prem-1"><img width="23px" src="../../img/pencil.png" /> </a>
-                  <a href="#"><img width="23px" src="../../img/delete.png" /></a>
-                </td>
-              </tr>
-              <tr>
-                <td>20170026</td>
-                <td>steveyu</td>
-                <td>littlepageprogram@163.com</td>
-                <td>软件工程</td>
-                <td>热爱生活，热爱代码</td>
-                <td>周平老师</td>
-                <td>
-                  <a href="#" class="prem-1"><img width="23px" src="../../img/pencil.png" /> </a>
-                  <a href="#"><img width="23px" src="../../img/delete.png" /></a>
-                </td>
-              </tr>
-              <tr>
-                <td>20170026</td>
-                <td>steveyu</td>
-                <td>littlepageprogram@163.com</td>
-                <td>软件工程</td>
-                <td>热爱生活，热爱代码</td>
-                <td>周平老师</td>
-                <td>
-                  <a href="#" class="prem-1"><img width="23px" src="../../img/pencil.png" /> </a>
-                  <a href="#"><img width="23px" src="../../img/delete.png" /></a>
-                </td>
-              </tr>
-              <tr>
-                <td>20170026</td>
-                <td>steveyu</td>
-                <td>littlepageprogram@163.com</td>
-                <td>软件工程</td>
-                <td>热爱生活，热爱代码</td>
-                <td>周平老师</td>
-                <td>
-                  <a href="#" class="prem-1"><img width="23px" src="../../img/pencil.png" /> </a>
-                  <a href="#"><img width="23px" src="../../img/delete.png" /></a>
-                </td>
-              </tr>
-              <tr>
-                <td>20170026</td>
-                <td>steveyu</td>
-                <td>littlepageprogram@163.com</td>
-                <td>软件工程</td>
-                <td>热爱生活，热爱代码</td>
-                <td>周平老师</td>
-                <td>
-                  <a href="#" class="prem-1"><img width="23px" src="../../img/pencil.png" /> </a>
-                  <a href="#"><img width="23px" src="../../img/delete.png" /></a>
-                </td>
-              </tr>
-             
+                <a class="prem-1 modify-label"><img width="23px" src="../../img/pencil.png" /> </a>
+                <a href="deleteStudent?id=${element.id}"  onclick="return confirm('确定删除该学生?')"><img width="23px" src="../../img/delete.png" /></a>
+              </c:forEach>
             </tbody>
           </table>
           <div class="btn-toolbar float-right mtem-3" role="toolbar" aria-label="Toolbar with button groups">
@@ -218,13 +114,11 @@
               <button type="button" class="btn-pagenum">首页</button>
             </div>
             <div class="btn-group mr-2" role="group" aria-label="Second group">
-              <button type="button" class="btn-pagenum">1</button>
-              <button type="button" class="btn-pagenum">2</button>
-              <button type="button" class="btn-pagenum">3</button>
-              <button type="button" class="btn-pagenum">4</button>
-              <button type="button" class="btn-pagenum">7</button>
-              <button type="button" class="btn-pagenum">8</button>
-              <button type="button" class="btn-pagenum">9</button>
+              <c:forEach var="i" begin="1" end="${pageCount}">
+                <a href="#">
+                  <button type="button" class="btn-pagenum">${i}</button>
+                </a>
+              </c:forEach>
             </div>
             <div class="btn-group mr-2" role="group" aria-label="First group">
               <button type="button" class="btn-pagenum">尾页</button>
@@ -240,6 +134,7 @@
 
 
     <!-- 弹模态框 -->
+    <!-- 批量导入模态框 -->
     <div class="model-card shadow" id="upload-model-card">
       <div class="model-card-container">
           <div>
@@ -250,11 +145,71 @@
               <img id="upload-img" class="upload-img" src="../../img/upload-pic.png" width="40%" />
           </div>
       </div>
-      <form action="#">
-        <input id="upload-img-inputfile" type="file" style="display: none;" />
+      <form action="insertBatch" enctype="multipart/form-data" method="post">
+        <input id="upload-img-inputfile" name="studentFile" type="file" style="display: none;" />
         <button id="upload-img-inputfile-btn" type="submit" class="hidden"></button>
       </form>
+      <div class="hidden" id="msg">${message}</div>
+      <% if(request.getSession().getAttribute("message") != null) request.getSession().removeAttribute("message");%>
+  </div>
 
+  <!-- 修改信息模态框 -->
+  <div class="model-card-modify shadow" id="upload-model-card-modify">
+    <div class="model-card-container">
+        <div>
+            修改信息
+        </div>
+        <hr />
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    学号
+                </div>
+            </div>
+            <input type="text" name="loginName" class="form-control" placeholder="student number" value="">
+        </div>
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    姓名
+                </div>
+            </div>
+            <input type="text" name="loginName" class="form-control" placeholder="name" value="">
+        </div>
+        <div class="mtem-1 mbem-1 row"">
+            <div class="col-md-6"><input type="radio" name="sex" value="男" checked/> 男</div>
+            <div class="col-md-6"><input type="radio" name="sex" value="女" /> 女</div>
+        </div>
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    邮箱
+                </div>
+            </div>
+            <input type="text" name="loginName" class="form-control" placeholder="email" value="">
+        </div>
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    专业
+                </div>
+            </div>
+            <input type="text" name="loginName" class="form-control" placeholder="major" value="">
+        </div>
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    信息
+                </div>
+            </div>
+            <textarea class="form-control" placeholder="information"></textarea>
+        </div>
+        <div class="row ptem-1">
+          <div class="col-md-6"><button>确认修改</button></div>
+          <div class="col-md-6" id="hide-mofify-card"><button>取消</button></div>
+        </div>
+    </div>
+    <input id="upload-img-inputfile" type="file" style="display: none;" />
   </div>
     
   <script src="../../js/jquery-3.5.0.min.js"></script>
@@ -271,7 +226,7 @@
     })
 
     $('#xmlInput').click(()=>{
-      $('#upload-model-card').css('display', 'block')
+      $('#upload-model-card').fadeIn(0.2)
     })
 
     $('#upload-model-card').click(()=>{
@@ -282,7 +237,32 @@
       document.getElementById('upload-img-inputfile-btn').click()
     })
 
+    $('.modify-label').click(function(){
+      $('#upload-model-card-modify').css('display', 'block')
+      // $(this).children('td').eq(0).children('input').val()
+      // alert($(this).siblings('tr').html())
+      // alert($(this).parent().find('td').text())
+    })
 
+    // 提示语的 alert
+    // if($('#msg').text() !== '') alert($('#msg').text())
+
+    // 点旁边小时
+    $(document).click(function(e) {
+      var target = $(e.target)
+      if(target.closest('#upload-model-card').length == 0 && target.closest('#xmlInput').length == 0) {
+        $('#upload-model-card').fadeOut()
+      }
+    })
+
+    // 点取消隐藏
+    $('#hide-mofify-card').click((e)=> {
+      $('#upload-model-card-modify').fadeOut()
+    })
+
+    // if($('#msg').innerHTML !== "") {
+    //   alert($('#msg').innerHTML())
+    // }
     // 下载hover
     // $('.download-pic').hover((e)=>{
     //   e.target.src = "../../img/download-white.png"
@@ -292,7 +272,6 @@
     //   $('.label-download').css('display', 'none')
     // })
     // 下载点击
-    
     
     // 上传hover
     // $('.upload-pic').hover((e)=>{

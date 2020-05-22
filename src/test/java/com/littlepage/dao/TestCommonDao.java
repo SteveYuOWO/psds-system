@@ -63,7 +63,7 @@ public class TestCommonDao {
         Map<String, Object> map = new HashMap<>();
         map.put("name", "ro");
         map.put("role", "ro");
-        List<Admin> list1 = commonDao.selectLike("t_admin", map, Admin.class);
+        List<Admin> list1 = commonDao.selectLike("t_admin", "ro", Admin.class);
         list1.forEach(System.out::println);
         System.out.println();
     }

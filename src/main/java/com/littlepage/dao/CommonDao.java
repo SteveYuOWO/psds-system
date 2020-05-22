@@ -1,5 +1,8 @@
 package com.littlepage.dao;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.sql.*;
@@ -15,6 +18,9 @@ import java.util.Set;
 public class CommonDao<T> {
     static Connection conn = null;
     static Statement stmt = null;
+
+    Logger logger = LoggerFactory.getLogger(this.getClass());
+
     static {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -46,6 +52,7 @@ public class CommonDao<T> {
             }
             sql.replace(sql.length() - 2, sql.length(), ")");
             success = stmt.executeUpdate(sql.toString());
+            logger.info(sql.toString());
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -65,6 +72,7 @@ public class CommonDao<T> {
             String clazzName = splits[splits.length - 1];
             clazzName = "t_" + Character.toLowerCase(clazzName.charAt(0)) + clazzName.substring(1);
             String sql = "delete from " + clazzName + " where id="+id;
+            logger.info(sql);
             success = stmt.executeUpdate(sql);
         }catch (Exception e) {
             e.printStackTrace();
@@ -94,6 +102,7 @@ public class CommonDao<T> {
             sql.delete(sql.length() - 2, sql.length());
             sql.append(" where id=" + id.toString());
             success = stmt.executeUpdate(sql.toString());
+            logger.info(sql.toString());
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -114,6 +123,7 @@ public class CommonDao<T> {
             String clazzName = splits[splits.length - 1];
             clazzName = "t_" + Character.toLowerCase(clazzName.charAt(0)) + clazzName.substring(1);
             String sql = "select * from " + clazzName + " limit " + start + "," + count;
+            logger.info(sql);
             ResultSet rs = stmt.executeQuery(sql);
             Field[] fields = clazz.getDeclaredFields();
             while (rs.next()) {
@@ -168,8 +178,56 @@ public class CommonDao<T> {
                     sql.append(" " + key + "=" + value);
                 }
             }
-            System.out.println(sql.toString());
             ResultSet rs = stmt.executeQuery(sql.toString());
+            while (rs.next()) {
+                T t = clazz.newInstance();
+                for (Field field : clazz.getDeclaredFields()) {
+                    field.setAccessible(true);
+                    if(field.getType().toString().endsWith("String")) {
+                        String value = rs.getString(field.getName());
+                        // set 注入
+                        Method method0 = clazz.getDeclaredMethod("set" +
+                                Character.toUpperCase(field.getName().charAt(0)) +
+                                field.getName().substring(1), String.class);
+                        method0.invoke(t, value);
+                    }
+                    else if(field.getType().toString().endsWith("Integer")) {
+                        Integer value = rs.getInt(field.getName());
+                        rs.getInt(field.getName());
+                        Method method0 = clazz.getDeclaredMethod("set" +
+                                Character.toUpperCase(field.getName().charAt(0)) +
+                                field.getName().substring(1), Integer.class);
+                        method0.invoke(t, value);
+                    }
+                }
+                list.add(t);
+            }
+            logger.info(sql.toString());
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    /**
+     * select * from t_tableName where x like x or ...的抽象
+     * @param tableName
+     * @param params
+     * @param clazz
+     * @return
+     */
+    public List<T> selectLike(String tableName, String keyword, Class<T> clazz) {
+        List<T> list = new ArrayList<>();
+        try {
+            StringBuffer sql = new StringBuffer("select * from " + tableName + " where");
+            boolean start = true;
+            for (Field field : clazz.getDeclaredFields()) {
+                if(field.getType().toString().endsWith("String"))
+                    sql.append(" " + field.getName() + " like " + "'%" + keyword + "%'" + " or");
+            }
+            String sqlStr = sql.substring(0, sql.length() - 2);
+            logger.info(sqlStr);
+            ResultSet rs = stmt.executeQuery(sqlStr);
             while (rs.next()) {
                 T t = clazz.newInstance();
                 for (Field field : clazz.getDeclaredFields()) {
@@ -199,54 +257,16 @@ public class CommonDao<T> {
         return list;
     }
 
-    /**
-     * select * from t_tableName where x like x and ...的抽象
-     * @param tableName
-     * @param params
-     * @param clazz
-     * @return
-     */
-    public List<T> selectLike(String tableName, Map<String, Object> params, Class<T> clazz) {
-        List<T> list = new ArrayList<>();
+    public int count(String tableName) {
         try {
-            StringBuffer sql = new StringBuffer("select * from " + tableName + " where");
-            Set<String> keys = params.keySet();
-            boolean start = true;
-            for (String key : keys) {
-                if(start) start = false;
-                else sql.append(" and");
-                Object value = params.get(key);
-                if(value instanceof String) {
-                    sql.append(" " + key + " like '%" + value + "%'");
-                }
-            }
-            ResultSet rs = stmt.executeQuery(sql.toString());
-            while (rs.next()) {
-                T t = clazz.newInstance();
-                for (Field field : clazz.getDeclaredFields()) {
-                    field.setAccessible(true);
-                    if(field.getType().toString().endsWith("String")) {
-                        String value = rs.getString(field.getName());
-                        // set 注入
-                        Method method0 = clazz.getDeclaredMethod("set" +
-                                Character.toUpperCase(field.getName().charAt(0)) +
-                                field.getName().substring(1), String.class);
-                        method0.invoke(t, value);
-                    }
-                    else if(field.getType().toString().endsWith("Integer")) {
-                        Integer value = rs.getInt(field.getName());
-                        rs.getInt(field.getName());
-                        Method method0 = clazz.getDeclaredMethod("set" +
-                                Character.toUpperCase(field.getName().charAt(0)) +
-                                field.getName().substring(1), Integer.class);
-                        method0.invoke(t, value);
-                    }
-                }
-                list.add(t);
-            }
-        }catch (Exception e) {
+            String sql = "select count(*) from " + tableName;
+            logger.info(sql.toString());
+            ResultSet rs = stmt.executeQuery(sql);
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return list;
+        return 0;
     }
 }

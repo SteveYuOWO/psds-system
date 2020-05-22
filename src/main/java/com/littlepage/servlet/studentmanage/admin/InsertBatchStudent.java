@@ -50,7 +50,7 @@ public class InsertBatchStudent extends HttpServlet {
                 upload.setHeaderEncoding("UTF-8");
                 // 构造临时路径来存储上传的文件
                 // 这个路径相对当前应用的目录
-                String uploadPath = getServletContext().getRealPath("/") + File.separator + UPLOAD_DIRECTORY;
+                String uploadPath = getServletContext().getRealPath("/") + UPLOAD_DIRECTORY;
                 // 如果目录不存在则创建
                 File uploadDir = new File(uploadPath);
                 if (!uploadDir.exists()) {

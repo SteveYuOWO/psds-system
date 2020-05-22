@@ -155,11 +155,27 @@ tr:hover {
 .model-card {
     transition: 0.5s linear;
     background: white;
-    opacity: 0.90;
+    opacity: 0.95;
     max-width: 20%;
     color: rgb(87, 87, 87);
     margin-left: 40%;
     margin-top: 13%;
+    text-align: center;
+    z-index: 200;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+}
+
+.model-card-modify {
+    transition: 0.5s linear;
+    background: white;
+    opacity: 0.95;
+    max-width: 20%;
+    color: rgb(87, 87, 87);
+    margin-left: 40%;
+    margin-top: 10%;
     text-align: center;
     z-index: 200;
     position: fixed;
@@ -218,4 +234,9 @@ tr:hover {
     margin-right: 8em;
     margin-top: 0.55em;
     padding-left: 1em;
+}
+
+.radio-margin {
+    margin-top: 1em !important;
+    margin-bottom: 1em !important;
 }

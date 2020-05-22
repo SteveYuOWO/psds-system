@@ -33,22 +33,17 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> search(Student student) {
-        Map<String, Object> map = new TreeMap<>();
-        map.put("name", student.getName());
-        map.put("sex", student.getSex());
-        map.put("stunum", student.getSex());
-        map.put("identitynum", student.getSex());
-        map.put("email", student.getSex());
-        map.put("headpic", student.getSex());
-        map.put("major", student.getSex());
-        map.put("info", student.getSex());
-        map.put("chooseteacher", student.getSex());
-        return commonDao.selectLike("t_student", null,Student.class);
+    public List<Student> search(String message) {
+        return commonDao.selectLike("t_student", message,Student.class);
     }
 
     @Override
     public boolean update(Student student) {
         return commonDao.update(student);
+    }
+
+    public int makePageList(int pageSize) {
+        int size = commonDao.count("t_student");
+        return size / pageSize;
     }
 }

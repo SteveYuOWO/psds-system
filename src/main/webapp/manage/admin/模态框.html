@@ -6,6 +6,7 @@
     <title>Document</title>
     
     <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../css/common.css" />
 </head>
 <style>
    .model-card {
@@ -46,12 +47,55 @@
      <div class="model-card shadow" id="upload-model-card">
         <div class="model-card-container">
             <div>
-                导出文件
+                修改信息
             </div>
             <hr />
-            <div>
-                <img id="upload-img" class="upload-img" src="../../img/upload-pic.png" width="40%" />
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        学号
+                    </div>
+                </div>
+                <input type="text" name="loginName" class="form-control" placeholder="stuNum" value="stuNum">
             </div>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        姓名
+                    </div>
+                </div>
+                <input type="text" name="loginName" class="form-control" placeholder="name" value="">
+            </div>
+            <div class="mtem-1 mbem-1 row"">
+                <div class="col-md-6"><input type="radio" name="sex" value="男"/> 男</div>
+                <div class="col-md-6"><input type="radio" name="sex" value="女" /> 女</div>
+            </div>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        邮箱
+                    </div>
+                </div>
+                <input type="text" name="loginName" class="form-control" placeholder="name" value="">
+            </div>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        专业
+                    </div>
+                </div>
+                <input type="text" name="loginName" class="form-control" placeholder="name" value="">
+            </div>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        信息
+                    </div>
+                </div>
+                <textarea class="form-control"></textarea>
+            </div>
+
+            
         </div>
         <input id="upload-img-inputfile" type="file" style="display: none;" />
     </div>

@@ -21,11 +21,9 @@ public class StudentListener extends AnalysisEventListener<Student> {
     //每隔5条存储数据库，实际使用中可以3000条，然后清理list ，方便内存回收
     private static final int BATCH_COUNT = 5;
 
-    public StudentListener() {
-    }
-
     @Override
     public void invoke(Student student, AnalysisContext context) {
+        System.out.println(student);
         if(student.getId() != null) studentList.add(student);
         if (studentList.size() >= BATCH_COUNT) {
             saveData();
@@ -43,6 +41,7 @@ public class StudentListener extends AnalysisEventListener<Student> {
     private void saveData() {
         logger.info(String.valueOf(studentList.size()));
         for (Student student : studentList) {
+            System.out.println(student);
             studentService.insertStudent(student);
         }
         logger.info("存储数据库成功！");
