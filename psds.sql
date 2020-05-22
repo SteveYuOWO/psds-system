@@ -7,12 +7,12 @@ create table t_student(
                           name varchar(50),
                           sex char(2),
                           stuNum varchar(50),
-                          identityNum varchar(30),
                           email varchar(50),
-                          headPic varchar(50),
                           major varchar(50),
                           info varchar(2000),
-                          chooseTeacher int,
+                          chooseTeacher1 int,
+                          chooseTeacher2 int,
+                          chooseTeacher3 int,
                           passwd varchar(200)
 );
 
@@ -21,9 +21,7 @@ create table t_teacher(
                           name varchar(50),
                           sex char(2),
                           teaNum varchar(50),
-                          identityNum varchar(30),
                           email varchar(50),
-                          headPic varchar(50),
                           major varchar(50),
                           info varchar(2000),
                           chooseStudent int,
