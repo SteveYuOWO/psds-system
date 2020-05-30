@@ -46,22 +46,22 @@
             <i class="fa fa-align-justify prem-1"></i>功能列表
           </p>
         </div>
-        <div class="mtem-1 option-menu option-select rounded-pill">
-            <p id="showStudents" class="white plem-3 option-text"><i class="fa fa-users prem-1"></i>学生管理</p>
-        </div>
-        <div class="mtem-1 option-menu rounded-pill">
-          <p class="gray plem-3 option-text"><i class="fa fa-user"></i>教师管理</p>
-        </div>
-        <div class="mtem-1 option-menu rounded-pill">
-          <p class="gray plem-3 option-text"><i class="fa fa-gear"></i>个人信息修改</p>
-        </div>
+            <div class="mtem-1 option-menu option-select rounded-pill">
+                <p id="showStudents" class="white plem-3 option-text"><i class="fa fa-users prem-1"></i>学生管理</p>
+            </div>
+            <div class="mtem-1 option-menu rounded-pill">
+              <p id="showTeachers" class="gray plem-3 option-text"><i class="fa fa-user"></i>教师</p>
+            </div>
+            <div class="mtem-1 option-menu rounded-pill">
+              <p id="showMajors" class="gray plem-3 option-text"><i class="fa fa-book prem-1"></i>专业管理</p>
+            </div>
         <br />
         <hr />
       </div>
       <div class="col-md-10">
         <!-- 欢迎界面 -->
         <div class="ptem-2 plem-2 main-content dark-gray">
-          <p class="right-title">欢迎管理员 Steve Yu 登陆研究生导师双选平台</p>
+          <p class="right-title">欢迎 ${type} ${username} 登陆研究生导师双选平台</p>
         </div>
         <hr />
         <!-- 按钮button -->
@@ -70,15 +70,9 @@
                 <button type="button" class="btn-steve">批量导出</button>
             </a>
             <button type="button" id="xmlInput" class="btn-steve">批量导入</button>
-            <button type="button" class="btn-steve">单条录入</button>
+            <button type="button" class="btn-steve" id="add-model-card-btn">单条录入</button>
             <input id="search" type="text" class="btn-steve-text" placeholder="搜索" />
         </div>
-        <!-- 公告 -->
-        <!-- <div class="bg-light-gray announce ptem-1 plem-2 dark-gray">
-          <h6><i class="fa fa-bullhorn prem-1"></i>公告</h6>
-          <hr />
-          <h6>为了您的账户安全，首次登陆请修改密码。点击"<a href="dashboard-root.html"></a><font class="emphasize-font change-pass-btn">密码修改</font></a>"进行修改首次密码修改</h6>
-        </div> -->
         <!-- 表格 -->
         <div class="mtem-2">
           <div class="minbox text-center plem-1 prem-1"><i class="fa fa-file-text-o prem-1"></i>学生信息</div>
@@ -91,9 +85,6 @@
                 <th>邮箱</th>
                 <th>报考专业</th>
                 <th>个人简介</th>
-                <th>志愿1</th>
-                <th>志愿2</th>
-                <th>志愿3</th>
                 <th></th>
               </tr>
             </thead>
@@ -107,9 +98,6 @@
                   <td>${element.email}</td>
                   <td>${element.major}</td>
                   <td>${element.info}</td>
-                  <td>${element.chooseTeacher1 == 0 ? "未选择" : element.chooseTeacher1}</td>
-                  <td>${element.chooseTeacher2 == 0 ? "未选择" : element.chooseTeacher2}</td>
-                  <td>${element.chooseTeacher3 == 0 ? "未选择" : element.chooseTeacher3}</td>
                 <td>
                 <a class="prem-1 modify-label"><img width="23px" src="../../img/pencil.png" /> </a>
                 <a href="deleteStudent?id=${element.id}"  onclick="return confirm('确定删除该学生?')"><img width="23px" src="../../img/delete.png" /></a>
@@ -218,9 +206,77 @@
               <textarea id="info" name="info" class="form-control" placeholder="information"></textarea>
           </div>
           <div class="row ptem-1">
-            <div class="col-md-6"><button type="submit">确认修改</button></div>
+            <div class="col-md-6"><button type="submit">修改</button></div>
             <div class="col-md-6" id="hide-mofify-card"><button type="button">取消</button></div>
           </div>
+      </div>
+    </div>
+  </form>
+
+  <!-- 单条录入 -->
+  <form action="addstudent" method="post">
+    <div class="model-card shadow" id="add-model-card" style="margin-top: 8em;">
+      <div class="model-card-container">
+          <div>
+              单条录入
+          </div>
+          <hr />
+          <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                  <div class="input-group-text">
+                      学号
+                  </div>
+              </div>
+              <input type="text" name="stuNum" class="form-control" placeholder="stuNum" value="">
+          </div>
+          <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                  <div class="input-group-text">
+                      姓名
+                  </div>
+              </div>
+              <input type="text" name="name" class="form-control" placeholder="name" value="">
+          </div>
+          <div class="mtem-1 mbem-1 row">
+              <div class="col-md-6"><input type="radio" name="sex" value="1" checked /> 男</div>
+              <div class="col-md-6"><input type="radio" name="sex" value="0" /> 女</div>
+          </div>
+          <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                  <div class="input-group-text">
+                      邮箱
+                  </div>
+              </div>
+              <input type="text" name="email" class="form-control" placeholder="email" value="">
+          </div>
+          <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                  <div class="input-group-text">
+                      专业
+                  </div>
+              </div>
+              <input type="text" name="major" class="form-control" placeholder="major" value="">
+          </div>
+          <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                  <div class="input-group-text">
+                      信息
+                  </div>
+              </div>
+              <textarea name="information" class="form-control" placeholder="information"></textarea>
+          </div>
+          <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                  <div class="input-group-text">
+                      密码
+                  </div>
+              </div>
+              <input type="password" name="password" class="form-control" placeholder="password" value="">
+          </div>
+      </div>
+      <div class="row mbem-3">
+        <div class="col-md-6"><button type="submit">添加</button></div>
+        <div class="col-md-6" id="add-model-card-hidden"><button type="button">取消</button></div>
       </div>
     </div>
   </form>
@@ -229,15 +285,23 @@
   <script src="../../js/bootstrap.min.js"></script>
  <script>
     $('#showStudents').click(()=>{
-     window.location.href="showstudents";
+        window.location.href="showstudents";
+    })
+
+    $('#showTeachers').click(()=>{
+        window.location.href="showteachers";
+    })
+
+    $('#showMajors').click(()=>{
+        window.location.href="showMajors";
     })
 
     $('.left-bar-title').click(()=>{
-      window.location.href="dashboard-admin.html";
+        window.location.href="#";
     })
 
     $('.change-pass-btn').click(()=>{
-      window.location.href="dashboard-admin.html"; 
+      window.location.href="#";
     })
 
     $('#xmlInput').click(()=>{
@@ -288,45 +352,15 @@
         }
     })
 
-    // if($('#msg').innerHTML !== "") {
-    //   alert($('#msg').innerHTML())
-    // }
-    // 下载hover
-    // $('.download-pic').hover((e)=>{
-    //   e.target.src = "../../img/download-white.png"
-    //   $('.label-download').css('display', 'block')
-    // },(e)=>{
-    //   e.target.src = "../../img/download.png"
-    //   $('.label-download').css('display', 'none')
-    // })
-    // 下载点击
-    
-    // 上传hover
-    // $('.upload-pic').hover((e)=>{
-    //   e.target.src = "../../img/upload-white.png"
-    //   $('.label-upload').css('display', 'block')
-    // },(e)=>{
-    //   e.target.src = "../../img/upload.png"
-    //   $('.label-upload').css('display', 'none')
-    // })
-    // // 上传点击
-    // $('.upload-pic').click((e)=>{
-    //   $('#upload-model-card').fadeIn()
-    // })
+    // 增加页面弹出
+    $('#add-model-card-btn').click((e)=>{
+      $('#add-model-card').css('display', 'block')
+    })
 
-    // upload 模态框
-    // var upload = document.getElementById('upload-img')
-    // upload.onclick = ()=>{
-    //     document.getElementById('upload-img-inputfile').click()
-    //     // 提交
-    // }
-    // 设置消失
-    // $(document).click(function(e) {
-    //   var target = $(e.target)
-    //   if(target.closest('.upload-pic').length == 0 && target.closest('.model-card').length == 0) {
-    //     $('#upload-model-card').fadeOut()
-    //   }
-    // })
+    // 增加页面隐藏
+    $('#add-model-card-hidden').click((e)=>{
+      $('#add-model-card').fadeOut()
+    })
   </script>
 </body>
 </html>

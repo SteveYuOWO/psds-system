@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 导出Excel
+ */
 @WebServlet(urlPatterns = "/manage/admin/exportStudents")
 public class ExportStudent extends HttpServlet {
     StudentService studentService = new StudentServiceImpl();

@@ -1,5 +1,6 @@
 package com.littlepage.servlet.studentmanage.admin;
 
+import com.littlepage.entity.Student;
 import com.littlepage.service.StudentService;
 import com.littlepage.service.StudentServiceImpl;
 
@@ -9,22 +10,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet(urlPatterns = "/manage/admin/deleteStudent")
-public class DeleteStudent extends HttpServlet {
+/**
+ * 搜索学生
+ */
+@WebServlet(urlPatterns = "/manage/admin/searchStudent")
+public class searchStudent extends HttpServlet {
 
     StudentService studentService = new StudentServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = -1;
-        if(req.getParameter("id") != null) id = Integer.parseInt(req.getParameter("id"));
-        if(id != -1) {
-            boolean success = studentService.deleteStudent(id);
-            if(success) req.getSession().setAttribute("message", "删除成功");
-            else req.getSession().setAttribute("message", "删除失败");
-        } else req.getSession().setAttribute("message", "删除失败");
-        resp.sendRedirect(req.getContextPath() + "/manage/admin/showstudents");
+        String message = req.getParameter("message");
+        if(message == null || message.equals("")) {
+            resp.sendRedirect("showstudents");
+            return;
+        }
+        List<Student> list = studentService.search(message);
+        req.setAttribute("pageCount", 1);
+        req.setAttribute("students", list);
+        req.getRequestDispatcher("dashboard-root.jsp").forward(req, resp);
     }
 
     @Override

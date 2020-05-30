@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * 修改学生信息
+ */
 @WebServlet(urlPatterns = "/manage/admin/modifyStudent")
 public class ModifyStudent extends HttpServlet {
     Logger logger = LoggerFactory.getLogger(ModifyStudent.class);
