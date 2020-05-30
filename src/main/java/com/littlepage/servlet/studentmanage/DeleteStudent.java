@@ -1,4 +1,4 @@
-package com.littlepage.servlet.studentmanage.admin;
+package com.littlepage.servlet.studentmanage;
 
 import com.littlepage.service.StudentService;
 import com.littlepage.service.StudentServiceImpl;

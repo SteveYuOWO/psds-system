@@ -14,9 +14,11 @@ public interface StudentService {
 
     boolean deleteStudent(int id);
 
-    List<Student> search(String message);
-
     boolean update(Student student);
 
+    List<Student> search(String message);
+
     int makePageList(int pageSize);
+
+    Student selectStudentByStuNum(String loginName);
 }

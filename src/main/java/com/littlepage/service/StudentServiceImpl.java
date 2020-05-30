@@ -46,4 +46,12 @@ public class StudentServiceImpl implements StudentService {
         int size = commonDao.count("t_student");
         return size / pageSize;
     }
+
+    @Override
+    public Student selectStudentByStuNum(String loginName) {
+        Map<String, Object> map = new TreeMap<>();
+        map.put("stuNum", loginName);
+        List<Student> list = commonDao.selectEqual("t_student", map, Student.class);
+        return list.size() == 0 ? null: list.get(0);
+    }
 }

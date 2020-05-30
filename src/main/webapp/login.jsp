@@ -70,7 +70,7 @@
                   <label id="wrong-msg" class="wrong-msg">&nbsp;</label>
               </div>
               <div>
-                  <input type="checkbox" name="remember" ${remember} /> <div class="inline gray font-sm">记住密码</div>
+                  <input type="checkbox" name="remember" checked /> <div class="inline gray font-sm">记住密码</div>
                   <div class="inline gray font-sm float-right">忘记密码</div><br />
               </div>
               <br />

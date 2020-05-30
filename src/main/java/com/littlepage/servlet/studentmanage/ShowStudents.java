@@ -16,7 +16,7 @@ import java.util.List;
  * 显示学生信息
  */
 @WebServlet(urlPatterns = "/manage/admin/showstudents")
-public class ShowStudent extends HttpServlet {
+public class ShowStudents extends HttpServlet {
     StudentService studentService = new StudentServiceImpl();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,7 +27,7 @@ public class ShowStudent extends HttpServlet {
         int pageCount = studentService.makePageList(10);
         req.setAttribute("pageCount", pageCount);
         req.setAttribute("students", students);
-        req.getRequestDispatcher("dashboard-root.jsp").forward(req, resp);
+        req.getRequestDispatcher("managestudents.jsp").forward(req, resp);
     }
 
     @Override

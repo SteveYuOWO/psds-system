@@ -212,7 +212,6 @@ public class CommonDao<T> {
     /**
      * select * from t_tableName where x like x or ...的抽象
      * @param tableName
-     * @param params
      * @param clazz
      * @return
      */
@@ -257,10 +256,15 @@ public class CommonDao<T> {
         return list;
     }
 
+    /**
+     * 计数
+     * @param tableName
+     * @return
+     */
     public int count(String tableName) {
         try {
             String sql = "select count(*) from " + tableName;
-            logger.info(sql.toString());
+            logger.info(sql);
             ResultSet rs = stmt.executeQuery(sql);
             rs.next();
             return rs.getInt(1);
@@ -268,5 +272,37 @@ public class CommonDao<T> {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    /**
+     * 查找一个table 存在key value
+     * @param tableName
+     * @param key
+     * @param value
+     * @param clazz
+     * @return
+     */
+    public List<T> selectByStringParam(String tableName, String key, String value, Class<T> clazz) {
+        List<T> list = new ArrayList<>();
+        try {
+            String sql = "select * from " + tableName + " where " + key + "='" + value + "'";
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                T t = clazz.newInstance();
+                Field[] fields = clazz.getDeclaredFields();
+                for (Field field : fields) {
+                    field.setAccessible(true);
+                    if(field.getType().toString().endsWith("String")) {
+                        field.set(t, rs.getString(field.getName()));
+                    } else if(field.getType().toString().endsWith("Integer")) {
+                        field.set(t, rs.getInt(field.getName()));
+                    }
+                }
+                list.add(t);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

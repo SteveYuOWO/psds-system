@@ -12,7 +12,7 @@ public class TestCommonDao {
     public void testInsert() {
         CommonDao<Admin> commonDao = new CommonDao<>();
         Admin admin = new Admin();
-        admin.setId(0).setName("root").setPasswd("root").setRole("root").setSex("男");
+//        admin.setId(0).setName("root").setPasswd("root").setRole("root").setSex("男");
         boolean insert = commonDao.insert(admin);
         System.out.println(insert);
     }
@@ -72,7 +72,7 @@ public class TestCommonDao {
     public void testUpdate() {
         CommonDao<Admin> commonDao = new CommonDao<>();
         Admin admin = new Admin();
-        admin.setId(19).setName("root1212").setPasswd("root12121").setRole("root121221").setSex("女");
+//        admin.setId(19).setName("root1212").setPasswd("root12121").setRole("root121221").setSex("女");
         boolean update = commonDao.update(admin);
         System.out.println(update);
     }

@@ -1,4 +1,4 @@
-package com.littlepage.servlet.studentmanage.admin;
+package com.littlepage.servlet.studentmanage;
 
 import com.alibaba.excel.EasyExcel;
 import com.littlepage.entity.Student;

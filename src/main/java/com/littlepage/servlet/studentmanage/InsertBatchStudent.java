@@ -1,4 +1,4 @@
-package com.littlepage.servlet.studentmanage.admin;
+package com.littlepage.servlet.studentmanage;
 
 import com.alibaba.excel.EasyExcel;
 import com.littlepage.entity.Student;
@@ -89,5 +89,4 @@ public class InsertBatchStudent extends HttpServlet {
         protected void doPost (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             doGet(req, resp);
         }
-
 }

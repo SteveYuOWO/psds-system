@@ -2,7 +2,10 @@ package com.littlepage.listener;
 
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
+import com.littlepage.entity.Major;
 import com.littlepage.entity.Student;
+import com.littlepage.service.MajorService;
+import com.littlepage.service.MajorServiceImpl;
 import com.littlepage.service.StudentService;
 import com.littlepage.service.StudentServiceImpl;
 import org.slf4j.Logger;
@@ -15,6 +18,7 @@ import java.util.List;
 public class StudentListener extends AnalysisEventListener<Student> {
     List<Student> studentList = new ArrayList<>();
     StudentService studentService = new StudentServiceImpl();
+    MajorService majorService = new MajorServiceImpl();
 
     Logger logger = LoggerFactory.getLogger(StudentListener.class);
 

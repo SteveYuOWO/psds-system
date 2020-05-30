@@ -1,4 +1,4 @@
-package com.littlepage.servlet.studentmanage.admin;
+package com.littlepage.servlet.studentmanage;
 
 import com.littlepage.entity.Student;
 import com.littlepage.service.StudentService;
@@ -30,7 +30,7 @@ public class searchStudent extends HttpServlet {
         List<Student> list = studentService.search(message);
         req.setAttribute("pageCount", 1);
         req.setAttribute("students", list);
-        req.getRequestDispatcher("dashboard-root.jsp").forward(req, resp);
+        req.getRequestDispatcher("managestudents.jsp").forward(req, resp);
     }
 
     @Override
