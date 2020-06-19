@@ -12,7 +12,7 @@ public interface MajorService {
 
     boolean updateMajor(Major major);
 
-    List<Major> selectMajorByName(String name);
+    Major selectMajorByName(String name);
 
     List<Major> selectMajors(int start, int count);
 

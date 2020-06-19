@@ -3,9 +3,11 @@ package com.littlepage.listener;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
 import com.littlepage.entity.Major;
-import com.littlepage.entity.Student;
 import com.littlepage.entity.Teacher;
 import com.littlepage.service.*;
+import com.littlepage.service.impl.MajorServiceImpl;
+import com.littlepage.service.impl.TeacherServiceImpl;
+import com.littlepage.util.Md5Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,12 +45,13 @@ public class TeacherListener extends AnalysisEventListener<Teacher> {
         logger.info(String.valueOf(teachers.size()));
         for (Teacher teacher: teachers) {
             // 设置专业
-            if(majorService.selectMajorByName(teacher.getMajor()).size() == 0) {
+            if(majorService.selectMajorByName(teacher.getMajor()) == null) {
                 Major major = new Major();
                 major.setId(0); major.setInfo("");
                 major.setMax(0); major.setName(teacher.getMajor());
                 majorService.insertMajor(major);
             }
+            teacher.setPasswd(Md5Util.getMD5Str(teacher.getPasswd()));
             teacherService.insertTeacher(teacher);
         }
         logger.info("存储数据库成功！");

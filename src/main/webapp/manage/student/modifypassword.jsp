@@ -26,17 +26,7 @@
     <link rel="stylesheet" href="../../css/dashboard.css" />
   </head>
 <body>
-  <nav class="d-flex flex-column flex-md-row align-items-center p-4 px-md-5 mb-1 bg-white shadow">
-    <div class="my-0 mr-md-auto font-weight-normal logo">
-      <img src="../../img/logo-design.png" width="400px"/>
-    </div>
-    <div class="my-2 my-md-1 mr-md-3">
-      <a class="p-2 nav-text" href="">导师信息</a>
-      <a class="p-2 nav-text" href="">个人信息</a>
-      <a class="p-2 nav-text" href="">学院概况</a>
-      <a class="p-2 nav-text" href="">信息服务</a>
-    </div>
-  </nav>
+<%@include file="../../navbar.jsp"%>
   <div class="container-fluid">
     <div class="row">
       <!-- 侧边栏 -->
@@ -69,7 +59,7 @@
         <hr />
           <!-- 修改密码 -->
           <div class="text-center" style="padding-left: 5%; padding-right: 5%">
-              <form action="modifyTeacher" method="post" class="shadow-sm">
+              <form action="modifyPasswordProcess" method="post" class="shadow-sm">
                   <div id="">
                       <div class="model-card-container">
                           <input type="hidden" id="stuid" name="id" />
@@ -83,7 +73,7 @@
                                       旧密码
                                   </div>
                               </div>
-                              <input type="password" class="form-control" placeholder="请输入旧密码" value="">
+                              <input name="oldPassword" type="password" class="form-control" placeholder="请输入旧密码" value="">
                           </div>
                           <div class="input-group mb-2">
                               <div class="input-group-prepend">
@@ -91,7 +81,7 @@
                                       新密码
                                   </div>
                               </div>
-                              <input type="password" class="form-control" placeholder="请输入新密码" value="">
+                              <input name="newPassword" type="password" class="form-control" placeholder="请输入新密码" value="">
                           </div>
                           <div class="input-group mb-2">
                               <div class="input-group-prepend">
@@ -99,14 +89,12 @@
                                       新密码
                                   </div>
                               </div>
-                              <input type="password" class="form-control" placeholder="请再次输入新密码" value="">
+                              <input name="repeatPassword" type="password" class="form-control" placeholder="请再次输入新密码" value="">
                           </div>
                           <div class="mr-2">
-                              <a href="#">
-                                  <button type="button" class="btn-pagenum dark-gray shadow-sm" style="border: 1px darkgray solid">
-                                      修改
-                                  </button>
-                              </a>
+                              <button type="submit" class="btn-pagenum dark-gray shadow-sm" style="border: 1px darkgray solid">
+                                  修改
+                              </button>
                           </div>
                       </div>
                   </div>

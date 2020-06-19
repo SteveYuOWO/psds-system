@@ -26,17 +26,7 @@
     <link rel="stylesheet" href="../../css/dashboard.css" />
   </head>
 <body>
-  <nav class="d-flex flex-column flex-md-row align-items-center p-4 px-md-5 mb-1 bg-white shadow">
-    <div class="my-0 mr-md-auto font-weight-normal logo">
-      <img src="../../img/logo-design.png" width="400px"/>
-    </div>
-    <div class="my-2 my-md-1 mr-md-3">
-      <a class="p-2 nav-text" href="">导师信息</a>
-      <a class="p-2 nav-text" href="">个人信息</a>
-      <a class="p-2 nav-text" href="">学院概况</a>
-      <a class="p-2 nav-text" href="">信息服务</a>
-    </div>
-  </nav>
+    <%@include file="../../navbar.jsp"%>
   <div class="container-fluid">
     <div class="row">
       <!-- 侧边栏 -->

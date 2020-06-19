@@ -11,7 +11,6 @@ import java.io.IOException;
 public class ModifyPersonalInfo extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         req.getRequestDispatcher("modifyinfo.jsp").forward(req, resp);
     }
 

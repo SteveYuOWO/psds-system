@@ -2,7 +2,7 @@ package com.littlepage.servlet.choosemanage;
 
 import com.littlepage.entity.Student;
 import com.littlepage.service.ChooseService;
-import com.littlepage.service.ChooseServiceImpl;
+import com.littlepage.service.impl.ChooseServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

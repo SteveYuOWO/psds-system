@@ -4,9 +4,10 @@ import com.alibaba.excel.util.StringUtils;
 import com.littlepage.entity.Major;
 import com.littlepage.entity.Teacher;
 import com.littlepage.service.MajorService;
-import com.littlepage.service.MajorServiceImpl;
+import com.littlepage.service.impl.MajorServiceImpl;
 import com.littlepage.service.TeacherService;
-import com.littlepage.service.TeacherServiceImpl;
+import com.littlepage.service.impl.TeacherServiceImpl;
+import com.littlepage.util.Md5Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,8 +39,8 @@ public class AddTeacher extends HttpServlet {
             Teacher teacher = new Teacher();
             teacher.setId(0); teacher.setTeaNum(teaNum); teacher.setMajor(major);
             teacher.setName(name); teacher.setEmail(email); teacher.setInfo(information);
-            teacher.setPasswd(password); teacher.setSex(sex.equals("1") ? "男": "女");
-            if(majorService.selectMajorByName(major).size() == 0) {
+            teacher.setPasswd(Md5Util.getMD5Str(password)); teacher.setSex(sex.equals("1") ? "男": "女");
+            if(majorService.selectMajorByName(major) == null) {
                 Major tmp = new Major();
                 tmp.setId(0); tmp.setInfo("");
                 tmp.setMax(0); tmp.setName(teacher.getMajor());

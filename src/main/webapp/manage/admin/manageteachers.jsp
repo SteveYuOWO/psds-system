@@ -26,17 +26,7 @@
     <link rel="stylesheet" href="../../css/dashboard.css" />
   </head>
 <body>
-  <nav class="d-flex flex-column flex-md-row align-items-center p-4 px-md-5 mb-1 bg-white shadow">
-    <div class="my-0 mr-md-auto font-weight-normal logo">
-      <img src="../../img/logo-design.png" width="400px"/>
-    </div>
-    <div class="my-2 my-md-1 mr-md-3">
-      <a class="p-2 nav-text" href="">导师信息</a>
-      <a class="p-2 nav-text" href="">个人信息</a>
-      <a class="p-2 nav-text" href="">学院概况</a>
-      <a class="p-2 nav-text" href="">信息服务</a>
-    </div>
-  </nav>
+<%@include file="../../navbar.jsp"%>
   <div class="container-fluid">
     <div class="row">
       <!-- 侧边栏 -->
@@ -52,10 +42,21 @@
           <div class="mtem-1 option-menu option-select rounded-pill">
               <p id="showTeachers" class="white plem-3 option-text"><i class="fa fa-user"></i>教师管理</p>
           </div>
+          <% if(request.getSession().getAttribute("type").equals("超级管理员")) { %>
+          <div class="mtem-1 option-menu rounded-pill">
+              <p id="showAdmins" class="gray plem-3 option-text"><i class="fa fa-expeditedssl prem-1"></i>学院管理员管理</p>
+          </div>
+          <% } %>
           <div class="mtem-1 option-menu rounded-pill">
               <p id="showMajors" class="gray plem-3 option-text"><i class="fa fa-book prem-1"></i>专业管理</p>
           </div>
-        <br />
+          <div class="mtem-1 option-menu rounded-pill">
+              <p id="chooseManage" class="gray plem-3 option-text"><i class="fa fa-building-o prem-1"></i>志愿管理</p>
+          </div>
+          <div class="mtem-1 option-menu rounded-pill">
+              <p id="showLogs" class="gray plem-3 option-text"><i class="fa fa-files-o prem-1"></i>登录日志</p>
+          </div>
+          <br />
         <hr />
       </div>
       <div class="col-md-10">
@@ -72,6 +73,13 @@
             <button type="button" id="xmlInput" class="btn-steve">批量导入</button>
             <button type="button" class="btn-steve" id="add-model-card-btn">单条录入</button>
             <input id="search" type="text" class="btn-steve-text" placeholder="搜索" />
+            <select class="select-steve">
+                <option value ="" selected>选择专业</option>
+
+                <c:forEach  var="element" items="${ majors }">
+                <option value ="${element.name}">${element.name}</option>
+                </c:forEach>
+            </select>
         </div>
         <!-- 表格 -->
         <div class="mtem-2">
@@ -111,9 +119,9 @@
               </a>
             </div>
             <div class="btn-group mr-2" role="group" aria-label="Second group">
-              <c:forEach var="i" begin="1" end="${pageCount}">
+              <c:forEach var="i" begin="0" end="${pageCount}">
                 <a href="showteachers?pageNum=${i}">
-                  <button type="button" class="btn-pagenum">${i}</button>
+                  <button type="button" class="btn-pagenum">${i+1}</button>
                 </a>
               </c:forEach>
             </div>
@@ -206,8 +214,8 @@
               <textarea id="info" name="info" class="form-control" placeholder="information"></textarea>
           </div>
           <div class="row ptem-1">
-            <div class="col-md-6"><button type="submit">修改</button></div>
-            <div class="col-md-6" id="hide-mofify-card"><button type="button">取消</button></div>
+            <div class="col-md-6"><button class="steve-sm-btn" type="submit">修改</button></div>
+            <div class="col-md-6" id="hide-mofify-card"><button class="steve-sm-btn" type="button">取消</button></div>
           </div>
       </div>
     </div>
@@ -275,8 +283,8 @@
           </div>
       </div>
       <div class="row mbem-3">
-        <div class="col-md-6"><button type="submit">添加</button></div>
-        <div class="col-md-6" id="add-model-card-hidden"><button type="button">取消</button></div>
+        <div class="col-md-6"><button class="steve-sm-btn" type="submit">添加</button></div>
+        <div class="col-md-6" id="add-model-card-hidden"><button class="steve-sm-btn" type="button">取消</button></div>
       </div>
     </div>
   </form>
@@ -284,17 +292,30 @@
   <script src="../../js/jquery-3.5.0.min.js"></script>
   <script src="../../js/bootstrap.min.js"></script>
  <script>
-    $('#showStudents').click(()=>{
-        window.location.href="showstudents";
-    })
 
-    $('#showTeachers').click(()=>{
-        window.location.href="showteachers";
-    })
+     $('#showAdmins').click(()=>{
+         window.location.href="showAdmin"
+     })
 
-    $('#showMajors').click(()=>{
-        window.location.href="showMajors";
-    })
+     $('#showLogs').click(()=>{
+         window.location.href="showLogs";
+     })
+
+     $('#chooseManage').click(()=>{
+         window.location.href="showChooseManage";
+     })
+
+     $('#showStudents').click(()=>{
+         window.location.href="showstudents";
+     })
+
+     $('#showTeachers').click(()=>{
+         window.location.href="showteachers";
+     })
+
+     $('#showMajors').click(()=>{
+         window.location.href="showMajors";
+     })
 
     $('.left-bar-title').click(()=>{
         window.location.href="#";
@@ -361,6 +382,13 @@
     $('#add-model-card-hidden').click((e)=>{
       $('#add-model-card').fadeOut()
     })
+
+     $('.select-steve').change(function () {
+         var major = $(this).find('option:selected').text();
+         if(major != '选择专业') {
+             window.location.href = 'searchTeacher?message=' + major;
+         }
+     })
   </script>
 </body>
 </html>

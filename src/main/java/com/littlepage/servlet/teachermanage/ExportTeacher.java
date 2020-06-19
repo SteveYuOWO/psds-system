@@ -3,10 +3,8 @@ package com.littlepage.servlet.teachermanage;
 import com.alibaba.excel.EasyExcel;
 import com.littlepage.entity.Student;
 import com.littlepage.entity.Teacher;
-import com.littlepage.service.StudentService;
-import com.littlepage.service.StudentServiceImpl;
 import com.littlepage.service.TeacherService;
-import com.littlepage.service.TeacherServiceImpl;
+import com.littlepage.service.impl.TeacherServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;

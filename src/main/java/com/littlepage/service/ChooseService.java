@@ -10,5 +10,17 @@ public interface ChooseService {
 
     int countStudentChooseNum(int studentId);
 
-    List<Teacher> selectDualChooseByStudent(int studentId);
+    List<Teacher> selectTeachersByStudent(int studentId);
+
+    List<DualChoose> selectDualChooseByStudent(int studentId);
+
+    boolean deleteDualChoose(int teacherId, int studentId);
+
+    boolean updateStatus(int studentId, int teacherId, int status);
+
+    Integer selectMajorCount(String name);
+
+    boolean confirmNullUpdate(int parseInt, int parseInt1, int i);
+
+    boolean confirmNullUpdate(int studentId, int status);
 }

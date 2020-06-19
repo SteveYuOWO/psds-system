@@ -3,7 +3,7 @@ package com.littlepage.servlet.majorsmanage;
 import com.alibaba.excel.util.StringUtils;
 import com.littlepage.entity.Major;
 import com.littlepage.service.MajorService;
-import com.littlepage.service.MajorServiceImpl;
+import com.littlepage.service.impl.MajorServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,8 +29,7 @@ public class ModifyMajor extends HttpServlet {
                 StringUtils.isEmpty(info)) {
             req.getSession().setAttribute("message", "输入不能为空");
         } else {
-            List<Major> majors = majorService.selectMajorByName(name);
-            Major major = majors.get(0);
+            Major major = majorService.selectMajorByName(name);
             major.setMax(Integer.parseInt(maxCapacity));
             major.setInfo(info);
             boolean success = majorService.updateMajor(major);

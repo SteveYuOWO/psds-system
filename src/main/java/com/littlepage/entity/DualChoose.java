@@ -1,6 +1,8 @@
 package com.littlepage.entity;
 
 public class DualChoose {
+    Integer id;
+
     Integer teacherId;
 
     Integer studentId;
@@ -17,6 +19,14 @@ public class DualChoose {
         this.teacherId = teacherId;
         this.studentId = studentId;
         this.status = status;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getTeacherId() {
@@ -46,7 +56,8 @@ public class DualChoose {
     @Override
     public String toString() {
         return "DualChoose{" +
-                "teacherId=" + teacherId +
+                "id=" + id +
+                ", teacherId=" + teacherId +
                 ", studentId=" + studentId +
                 ", status=" + status +
                 '}';

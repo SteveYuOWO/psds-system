@@ -1,9 +1,8 @@
 package com.littlepage.servlet.majorsmanage;
 
 import com.littlepage.entity.Major;
-import com.littlepage.entity.Student;
 import com.littlepage.service.MajorService;
-import com.littlepage.service.MajorServiceImpl;
+import com.littlepage.service.impl.MajorServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -1,5 +1,8 @@
 package com.littlepage.filter;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -7,9 +10,11 @@ import java.io.IOException;
 
 @WebFilter(filterName = "encodeFilter", urlPatterns = "/*")
 public class EncodeFilter implements Filter {
+    Logger logger = LoggerFactory.getLogger(EncodeFilter.class);
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        System.out.println("starting encode filter");
+        logger.info("starting encode filter");
     }
 
     @Override
@@ -27,6 +32,6 @@ public class EncodeFilter implements Filter {
 
     @Override
     public void destroy() {
-        System.out.println("destroy encode filter");
+        logger.info("destroy encode filter");
     }
 }

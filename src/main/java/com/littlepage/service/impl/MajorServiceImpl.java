@@ -1,8 +1,9 @@
-package com.littlepage.service;
+package com.littlepage.service.impl;
 
 import com.littlepage.dao.CommonDao;
 import com.littlepage.entity.Major;
 import com.littlepage.entity.Student;
+import com.littlepage.service.MajorService;
 
 import java.util.List;
 
@@ -28,8 +29,9 @@ public class MajorServiceImpl implements MajorService {
     }
 
     @Override
-    public List<Major> selectMajorByName(String name) {
-        return commonDao.selectByStringParam("t_major", "name", name, Major.class);
+    public Major selectMajorByName(String name) {
+        List<Major> majors = commonDao.selectByStringParam("t_major", "name", name, Major.class);
+        return majors.size() == 0 ? null: majors.get(0);
     }
 
     @Override

@@ -26,17 +26,7 @@
     <link rel="stylesheet" href="../../css/dashboard.css" />
   </head>
 <body>
-  <nav class="d-flex flex-column flex-md-row align-items-center p-4 px-md-5 mb-1 bg-white shadow">
-    <div class="my-0 mr-md-auto font-weight-normal logo">
-      <img src="../../img/logo-design.png" width="400px"/>
-    </div>
-    <div class="my-2 my-md-1 mr-md-3">
-      <a class="p-2 nav-text" href="">导师信息</a>
-      <a class="p-2 nav-text" href="">个人信息</a>
-      <a class="p-2 nav-text" href="">学院概况</a>
-      <a class="p-2 nav-text" href="">信息服务</a>
-    </div>
-  </nav>
+<%@include file="../../navbar.jsp"%>
   <div class="container-fluid">
     <div class="row">
       <!-- 侧边栏 -->
@@ -67,10 +57,6 @@
             <p class="right-title">欢迎 ${type} ${username} 登陆研究生导师双选平台</p>
         </div>
         <hr />
-          <!-- 按钮button -->
-          <div class="menu-group">
-              <input id="search" type="text" class="btn-steve-text" placeholder="搜索" />
-          </div>
         <!-- 表格 -->
         <div class="mtem-2">
           <div class="minbox text-center plem-1 prem-1"><i class="fa fa-file-text-o prem-1"></i>教师信息</div>

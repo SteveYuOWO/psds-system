@@ -26,17 +26,7 @@
     <link rel="stylesheet" href="../../css/dashboard.css" />
   </head>
 <body>
-  <nav class="d-flex flex-column flex-md-row align-items-center p-4 px-md-5 mb-1 bg-white shadow">
-    <div class="my-0 mr-md-auto font-weight-normal logo">
-      <img src="../../img/logo-design.png" width="400px"/>
-    </div>
-    <div class="my-2 my-md-1 mr-md-3">
-      <a class="p-2 nav-text" href="">导师信息</a>
-      <a class="p-2 nav-text" href="">个人信息</a>
-      <a class="p-2 nav-text" href="">学院概况</a>
-      <a class="p-2 nav-text" href="">信息服务</a>
-    </div>
-  </nav>
+    <%@include file="../../navbar.jsp"%>
   <div class="container-fluid">
     <div class="row">
       <!-- 侧边栏 -->
@@ -79,11 +69,11 @@
                       <th>邮箱</th>
                       <th>专业</th>
                       <th>个人简介</th>
-                      <th>选择导师</th>
+                      <th>移除导师</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <c:forEach  var="element" items="${ teachers }">
+                  <c:forEach  var="element" items="${ notChooseTeachers }">
                   <tr>
                       <td class="hidden">${element.id}</td>
                       <td>${element.teaNum}</td>
@@ -93,13 +83,15 @@
                       <td>${element.major}</td>
                       <td>${element.info}</td>
                       <td>
-                          <a href="chooseTeacher?id=${element.id}"  onclick="return confirm('确定选择该老师?')"><img width="23px" src="../../img/minus.png" /></a>
+                          <a href="deleteChooseTeacher?id=${element.id}"  onclick="return confirm('确定删除该志愿?')"><img width="23px" src="../../img/minus.png" /></a>
                           </c:forEach>
                   </tbody>
               </table>
           </div>
 
           <!-- 已被选择 -->
+          <br/>
+          <br/>
           <div class="mtem-2">
               <div class="minbox text-center plem-1 prem-1"><i class="fa fa-file-text-o prem-1"></i>已被选择</div>
               <table class="table text-center">
@@ -114,19 +106,53 @@
                       <th>&nbsp;</th>
                   </tr>
                   </thead>
-<%--                  <tbody>--%>
-<%--                  <c:forEach  var="element" items="${ teachers }">--%>
-<%--                  <tr>--%>
-<%--                      <td class="hidden">${element.id}</td>--%>
-<%--                      <td>${element.teaNum}</td>--%>
-<%--                      <td>${element.name}</td>--%>
-<%--                      <td>${element.sex}</td>--%>
-<%--                      <td>${element.email}</td>--%>
-<%--                      <td>${element.major}</td>--%>
-<%--                      <td>${element.info}</td>--%>
-<%--                      <td>&nbsp;</td>--%>
-<%--                  </c:forEach>--%>
-<%--                  </tbody>--%>
+                  <tbody>
+                  <c:forEach  var="element" items="${ hasConfirmedTeachers }">
+                  <tr>
+                      <td class="hidden">${element.id}</td>
+                      <td>${element.teaNum}</td>
+                      <td>${element.name}</td>
+                      <td>${element.sex}</td>
+                      <td>${element.email}</td>
+                      <td>${element.major}</td>
+                      <td>${element.info}</td>
+                      <td>&nbsp;</td>
+                  </c:forEach>
+                  </tbody>
+              </table>
+          </div>
+
+
+          <!-- 最终志愿 -->
+          <br/>
+          <br/>
+          <div class="mtem-2">
+              <div class="minbox text-center plem-1 prem-1"><i class="fa fa-file-text-o prem-1"></i>最终志愿</div>
+              <table class="table text-center">
+                  <thead>
+                  <tr>
+                      <th>教工号</th>
+                      <th>姓名</th>
+                      <th>性别</th>
+                      <th>邮箱</th>
+                      <th>专业</th>
+                      <th>个人简介</th>
+                      <th>&nbsp;</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <c:forEach  var="element" items="${ finalConfirmed }">
+                  <tr>
+                      <td class="hidden">${element.id}</td>
+                      <td>${element.teaNum}</td>
+                      <td>${element.name}</td>
+                      <td>${element.sex}</td>
+                      <td>${element.email}</td>
+                      <td>${element.major}</td>
+                      <td>${element.info}</td>
+                      <td>&nbsp;</td>
+                      </c:forEach>
+                  </tbody>
               </table>
           </div>
 

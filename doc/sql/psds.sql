@@ -7,12 +7,12 @@ create table t_admin
     passwd varchar(200) null
 );
 
-create table t_dual_choose
+create table t_dualChoose
 (
+    id int primary key auto_increment,
     teacherId int not null,
     studentId int not null,
-    status    int null,
-    primary key (teacherId, studentId)
+    status    int null
 );
 
 create table t_major

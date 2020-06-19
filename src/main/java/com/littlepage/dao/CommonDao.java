@@ -156,6 +156,53 @@ public class CommonDao<T> {
     }
 
     /**
+     * 降序批量查询
+     * @param clazz
+     * @param start
+     * @param count
+     * @param descName 降序字段
+     * @return
+     */
+    public List<T> selectBatchDesc(Class<T> clazz, int start, int count, String descName) {
+        List<T> list = new ArrayList<>();
+        try {
+            String[] splits = clazz.getName().split("\\.");
+            String clazzName = splits[splits.length - 1];
+            clazzName = "t_" + Character.toLowerCase(clazzName.charAt(0)) + clazzName.substring(1);
+            String sql = "select * from " + clazzName + " order by " + descName + " desc" + " limit " + start + "," + count;
+            logger.info(sql);
+            ResultSet rs = stmt.executeQuery(sql);
+            Field[] fields = clazz.getDeclaredFields();
+            while (rs.next()) {
+                T t = clazz.newInstance();
+                for (Field field : fields) {
+                    field.setAccessible(true);
+                    if(field.getType().toString().endsWith("String")) {
+                        String value = rs.getString(field.getName());
+                        // set 注入
+                        Method method0 = clazz.getDeclaredMethod("set" +
+                                Character.toUpperCase(field.getName().charAt(0)) +
+                                field.getName().substring(1), String.class);
+                        method0.invoke(t, value);
+                    }
+                    else if(field.getType().toString().endsWith("Integer")) {
+                        Integer value = rs.getInt(field.getName());
+                        rs.getInt(field.getName());
+                        Method method0 = clazz.getDeclaredMethod("set" +
+                                Character.toUpperCase(field.getName().charAt(0)) +
+                                field.getName().substring(1), Integer.class);
+                        method0.invoke(t, value);
+                    }
+                }
+                list.add(t);
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    /**
      * select * from t_tableName where x=x and ...的抽象
      * @param tableName
      * @param params
@@ -178,6 +225,7 @@ public class CommonDao<T> {
                     sql.append(" " + key + "=" + value);
                 }
             }
+            logger.info(sql.toString());
             ResultSet rs = stmt.executeQuery(sql.toString());
             while (rs.next()) {
                 T t = clazz.newInstance();
@@ -202,7 +250,6 @@ public class CommonDao<T> {
                 }
                 list.add(t);
             }
-            logger.info(sql.toString());
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -219,7 +266,6 @@ public class CommonDao<T> {
         List<T> list = new ArrayList<>();
         try {
             StringBuffer sql = new StringBuffer("select * from " + tableName + " where");
-            boolean start = true;
             for (Field field : clazz.getDeclaredFields()) {
                 if(field.getType().toString().endsWith("String"))
                     sql.append(" " + field.getName() + " like " + "'%" + keyword + "%'" + " or");
@@ -301,6 +347,78 @@ public class CommonDao<T> {
                 list.add(t);
             }
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
+    /**
+     * deleteEqual
+     * @param tableName
+     * @param params
+     * @param clazz
+     * @return
+     */
+    public boolean deleteEqual(String tableName, Map<String, Object> params, Class<T> clazz) {
+        int cnt = 0;
+        try {
+            StringBuffer sql = new StringBuffer("delete from " + tableName + " where");
+            Set<String> keys = params.keySet();
+            boolean start = true;
+            for (String key : keys) {
+                if(start) start = false;
+                else sql.append(" and");
+                Object value = params.get(key);
+                if(value instanceof String) {
+                    sql.append(" " + key + "='" + value + "'");
+                } else {
+                    sql.append(" " + key + "=" + value);
+                }
+            }
+            cnt = stmt.executeUpdate(sql.toString());
+            logger.info(sql.toString());
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cnt != 0;
+    }
+
+    public List<T> selectLike(String tableName, String keyword, Class<T> clazz, int start, int count) {
+        List<T> list = new ArrayList<>();
+        try {
+            StringBuffer sql = new StringBuffer("select * from " + tableName + " where");
+            for (Field field : clazz.getDeclaredFields()) {
+                if(field.getType().toString().endsWith("String"))
+                    sql.append(" " + field.getName() + " like " + "'%" + keyword + "%'" + " or");
+            }
+            String sqlStr = sql.substring(0, sql.length() - 2) + " limit " + start + "," + count;
+            logger.info(sqlStr);
+            ResultSet rs = stmt.executeQuery(sqlStr);
+            while (rs.next()) {
+                T t = clazz.newInstance();
+                for (Field field : clazz.getDeclaredFields()) {
+                    field.setAccessible(true);
+                    if(field.getType().toString().endsWith("String")) {
+                        String value = rs.getString(field.getName());
+                        // set 注入
+                        Method method0 = clazz.getDeclaredMethod("set" +
+                                Character.toUpperCase(field.getName().charAt(0)) +
+                                field.getName().substring(1), String.class);
+                        method0.invoke(t, value);
+                    }
+                    else if(field.getType().toString().endsWith("Integer")) {
+                        Integer value = rs.getInt(field.getName());
+                        rs.getInt(field.getName());
+                        Method method0 = clazz.getDeclaredMethod("set" +
+                                Character.toUpperCase(field.getName().charAt(0)) +
+                                field.getName().substring(1), Integer.class);
+                        method0.invoke(t, value);
+                    }
+                }
+                list.add(t);
+            }
+        }catch (Exception e) {
             e.printStackTrace();
         }
         return list;

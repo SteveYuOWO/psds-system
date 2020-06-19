@@ -1,12 +1,10 @@
 package com.littlepage.servlet.studentmanage;
 
 import com.alibaba.excel.util.StringUtils;
-import com.littlepage.entity.Major;
 import com.littlepage.entity.Student;
-import com.littlepage.service.MajorService;
-import com.littlepage.service.MajorServiceImpl;
 import com.littlepage.service.StudentService;
-import com.littlepage.service.StudentServiceImpl;
+import com.littlepage.service.impl.StudentServiceImpl;
+import com.littlepage.util.Md5Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,7 +37,7 @@ public class AddStudent extends HttpServlet {
             Student student = new Student();
             student.setId(0); student.setStuNum(stuNum); student.setMajor(major);
             student.setName(name); student.setEmail(email); student.setInfo(information);
-            student.setPasswd(password); student.setSex(sex.equals("1") ? "男": "女");
+            student.setPasswd(Md5Util.getMD5Str(password)); student.setSex(sex.equals("1") ? "男": "女");
             studentService.insertStudent(student);
             req.getSession().setAttribute("message", "单条录入成功");
         }

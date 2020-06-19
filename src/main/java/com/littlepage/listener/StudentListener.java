@@ -5,9 +5,10 @@ import com.alibaba.excel.event.AnalysisEventListener;
 import com.littlepage.entity.Major;
 import com.littlepage.entity.Student;
 import com.littlepage.service.MajorService;
-import com.littlepage.service.MajorServiceImpl;
+import com.littlepage.service.impl.MajorServiceImpl;
 import com.littlepage.service.StudentService;
-import com.littlepage.service.StudentServiceImpl;
+import com.littlepage.service.impl.StudentServiceImpl;
+import com.littlepage.util.Md5Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,10 +43,17 @@ public class StudentListener extends AnalysisEventListener<Student> {
         saveData();
         logger.info("所有数据解析完成！");
     }
+
+    /**
+     * 保存数据
+     */
     private void saveData() {
         logger.info(String.valueOf(studentList.size()));
         for (Student student : studentList) {
-            System.out.println(student);
+            if(majorService.selectMajorByName(student.getMajor()) == null) {
+                majorService.insertMajor(new Major(0, student.getMajor(), 0,""));
+            }
+            student.setPasswd(Md5Util.getMD5Str(student.getPasswd()));
             studentService.insertStudent(student);
         }
         logger.info("存储数据库成功！");

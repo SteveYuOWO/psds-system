@@ -21,4 +21,12 @@ public interface TeacherService {
     int makePageList(int pageSize);
 
     List<Teacher> selectTeacherByMajor(String major);
+
+    Teacher selectTeacherByTeaNum(String loginName);
+
+    List<Student> selectHasChooseStudentsByTeaId(Integer teacherId);
+
+    List<Student> selectHasConfirmedChooseStudentsByTeaId(Integer teacherId);
+
+    Teacher selectTeacherByTeaId(Integer teacherId);
 }

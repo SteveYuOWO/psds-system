@@ -16,9 +16,9 @@ public interface StudentService {
 
     boolean update(Student student);
 
-    List<Student> search(String message);
-
     int makePageList(int pageSize);
 
     Student selectStudentByStuNum(String loginName);
+
+    List<Student> search(String message, int start, int count);
 }

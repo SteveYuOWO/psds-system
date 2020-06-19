@@ -1,10 +1,8 @@
 package com.littlepage.servlet.studentmanage;
 
 import com.littlepage.entity.Student;
-import com.littlepage.service.MajorService;
-import com.littlepage.service.MajorServiceImpl;
 import com.littlepage.service.StudentService;
-import com.littlepage.service.StudentServiceImpl;
+import com.littlepage.service.impl.StudentServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

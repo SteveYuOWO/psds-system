@@ -1,7 +1,7 @@
 package com.littlepage.servlet.teachermanage;
 
 import com.littlepage.service.TeacherService;
-import com.littlepage.service.TeacherServiceImpl;
+import com.littlepage.service.impl.TeacherServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
