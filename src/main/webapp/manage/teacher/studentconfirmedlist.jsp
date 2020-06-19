@@ -69,6 +69,7 @@
                 <th>邮箱</th>
                 <th>报考专业</th>
                 <th>个人简介</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -81,6 +82,9 @@
                   <td>${element.email}</td>
                   <td>${element.major}</td>
                   <td>${element.info}</td>
+                  <td>
+                      <a href="teacherUnconfirm?id=${element.id}" onclick="return confirm('确认不选择该学生？')" class="prem-1"><img width="23px" src="../../img/minus.png" /> </a>
+                  </td>
                 </tr>
               </c:forEach>
             </tbody>

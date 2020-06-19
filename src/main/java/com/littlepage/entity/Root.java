@@ -1,9 +1,5 @@
 package com.littlepage.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 public class Root {
     private Integer id;
 
