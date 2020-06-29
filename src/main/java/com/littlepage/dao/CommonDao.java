@@ -24,7 +24,7 @@ public class CommonDao<T> {
     static {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/psds", "root", "Root123..");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/psds?characterEncoding=utf8", "root", "Root123..");
             stmt = conn.createStatement();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

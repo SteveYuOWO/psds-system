@@ -25,6 +25,11 @@ public class ManageFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
         Object type = request.getSession().getAttribute("type");
+        String uri = request.getRequestURI();
+        if(uri.indexOf("css") > 0 || uri.indexOf("js") > 0 || uri.indexOf("png") > 0) {
+            chain.doFilter(req, resp);
+            return;
+        }
         if(type == null) {
             response.sendRedirect(request.getContextPath());
             return;

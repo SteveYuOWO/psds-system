@@ -19,7 +19,7 @@
     <link href="./css/index.css" rel="stylesheet" />
     <link href="./css/login.css" rel="stylesheet" />
     <link href="./css/common.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link href="http://libs.baidu.com/fontawesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
   <div class="d-flex flex-column flex-md-row align-items-center p-4 px-md-5 mb-1 bg-white shadow">

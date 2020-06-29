@@ -14,7 +14,7 @@ body {
     background-color: rgb(252, 252, 252);
 }
 
-@media(max-width: 768px) {
+@media(max-width: 1200px) {
     button {
         width: 100%;
     }

@@ -53,8 +53,8 @@ public class ShowStudents extends HttpServlet {
      * @param resp
      */
     private void adminShowStudentProcess(int currentPage, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Student> students = studentService.selectStudents(currentPage * 10, 10);
-        int pageCount = studentService.makePageList(10);
+        List<Student> students = studentService.selectStudents(currentPage * 15, 15);
+        int pageCount = studentService.makePageList(15);
         req.setAttribute("pageCount", pageCount);
         req.setAttribute("students", students);
         req.getRequestDispatcher("managestudents.jsp").forward(req, resp);

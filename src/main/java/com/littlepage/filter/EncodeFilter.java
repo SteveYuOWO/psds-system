@@ -20,7 +20,7 @@ public class EncodeFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
         String uri = ((HttpServletRequest)request).getRequestURI();
-        if(uri.indexOf(".css") > 0 || uri.indexOf(".js") > 0 || uri.indexOf(".png") > 0) {
+        if(uri.indexOf("css") > 0 || uri.indexOf("js") > 0 || uri.indexOf("png") > 0) {
             filterChain.doFilter(request, response);
             return;
         }

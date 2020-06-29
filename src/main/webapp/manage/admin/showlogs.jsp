@@ -10,20 +10,19 @@
     <meta name="author" content="steve yu">
     <title>PSDS 研究生导师双选系统</title>
     <!-- Bootstrap core CSS -->
-    <link href="../../css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="/psds/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- Favicons -->
-    <link rel="apple-touch-icon" href="../../img/fav/favicon-128*128.ico" sizes="180x180">
-    <link rel="icon" href="../../img/fav/favicon-32*32.ico" sizes="32x32" type="image/png">
-    <link rel="icon" href="../../img/fav/favicon-16*16.ico" sizes="16x16" type="image/png">
-    <link rel="icon" href="../../img/fav/favicon-48*48.ico">
+    <link rel="apple-touch-icon" href="/psds/img/fav/favicon-128*128.ico" sizes="180x180">
+    <link rel="icon" href="/psds/img/fav/favicon-32*32.ico" sizes="32x32" type="image/png">
+    <link rel="icon" href="/psds/img/fav/favicon-16*16.ico" sizes="16x16" type="image/png">
+    <link rel="icon" href="/psds/img/fav/favicon-48*48.ico">
     <meta name="theme-color" content="#563d7c">
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="../../css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../../fontawesome/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="../../css/index.css" rel="stylesheet" />
-    <link href="../../css/common.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../../css/dashboard.css" />
+    <link rel="stylesheet" href="/psds/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/psds/fontawesome/css/all.min.css" />
+    <link href="http://libs.baidu.com/fontawesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/psds/css/common.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/psds/css/dashboard.css" />
   </head>
 <body>
 <%@include file="../../navbar.jsp"%>
@@ -117,8 +116,8 @@
   <footer>
     <div style="height: 10em;"></div>
   </footer>
-  <script src="../../js/jquery-3.5.0.min.js"></script>
-  <script src="../../js/bootstrap.min.js"></script>
+  <script src="/psds/js/jquery-3.5.0.min.js"></script>
+  <script src="/psds/js/bootstrap.min.js"></script>
  <script>
 
      $('#showAdmins').click(()=>{
@@ -210,6 +209,15 @@
     $('#add-model-card-hidden').click((e)=>{
       $('#add-model-card').fadeOut()
     })
+
+     var menuCnt = 0
+     $('.left-bar-title').click(function () {
+         if($(window).width() < 800) {
+             if(menuCnt % 2 == 0) $('.option-menu').slideToggle()
+             else $('.option-menu').slideToggle()
+             menuCnt++
+         }
+     })
   </script>
 </body>
 </html>

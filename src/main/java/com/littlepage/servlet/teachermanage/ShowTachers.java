@@ -67,8 +67,8 @@ public class ShowTachers extends HttpServlet {
         int currentPage = 0;
         if(pageNum != null) currentPage = Integer.parseInt(pageNum);
         List<Teacher> teachers = null;
-        teachers = teacherService.selectTeachers(currentPage * 10, 10);
-        int pageCount = teacherService.makePageList(10);
+        teachers = teacherService.selectTeachers(currentPage * 15, 15);
+        int pageCount = teacherService.makePageList(15);
         for (Teacher teacher : teachers) {
             logger.info(teacher.toString());
         }

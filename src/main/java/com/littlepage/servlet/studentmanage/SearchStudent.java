@@ -37,9 +37,9 @@ public class SearchStudent extends HttpServlet {
 
 
 //        List<Student> students = studentService.selectStudents(currentPage * 10, 10);
-        List<Student> list = studentService.search(message, currentPage * 10, 10);
-        int pageCount = studentService.makePageList(10);
-        req.setAttribute("pageCount", pageCount);
+        List<Student> list = studentService.search(message, currentPage * 10, 100000);
+//        int pageCount = studentService.makePageList(10);
+        req.setAttribute("pageCount", 0);
         req.setAttribute("students", list);
         majorProcess(req, resp);
         req.getRequestDispatcher("managestudents.jsp").forward(req, resp);

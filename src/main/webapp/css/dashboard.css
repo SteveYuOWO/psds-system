@@ -1,3 +1,11 @@
+a {
+    color: rgb(105, 105, 105);
+}
+a:hover {
+    color: rgb(41, 41, 41);
+    text-decoration: none;
+}
+
 .left-bar {
     margin: 0;
     padding: 0;
@@ -80,8 +88,8 @@ tr:hover {
     border-top: 1px solid rgb(211, 211, 211);
     border-left: 1px solid rgb(211, 211, 211);
     border-right: 1px solid rgb(211, 211, 211);
-    max-width: 9em;
-    max-height: 9em;
+    max-width: 9%;
+    max-height: 8em;
     margin-top: 1em;
     padding-top: 1em;
     padding-bottom: 1em;
@@ -214,7 +222,7 @@ tr:hover {
     height: 2.5em;
     margin-right: 1em;
     outline: none;
-    color: darkgray;
+    color: gray;
     background-color: white;
 }
 .btn-steve:focus {
@@ -260,7 +268,7 @@ tr:hover {
     background-color: white;
     border-radius: 0.85em;
     border: 1px darkgray solid;
-    color: darkgray;
+    color: gray;
 }
 
 .steve-sm-btn:hover {
@@ -278,6 +286,38 @@ tr:hover {
     width: 9em;
     height: 2.5em;
     float: right;
-    color: darkgray;
+    color: gray;
     margin-right: 2em;
+    display: block;
 }
+
+.option-menu {
+    display: block;
+}
+
+@media screen and (max-width:1300px){
+    .select-steve {
+        display: none;
+    }
+    .btn-steve {
+        display: none;
+    }
+    .btn-steve-text {
+        display: none;
+    }
+    .minbox {
+        font-size: larger;
+        padding-bottom: 2em;
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .option-menu {
+        display: none;
+    }
+}
+
+
+
+

@@ -2,8 +2,16 @@
     outline: 0;
 }
 
+a {
+    color: rgb(105, 105, 105);
+}
+a:hover {
+    color: rgb(41, 41, 41);
+    text-decoration: none;
+}
+
 body {
-    zoom: 84%;
+    zoom: 80%;
 }
 
 .inline {
