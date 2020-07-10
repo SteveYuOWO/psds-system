@@ -20,10 +20,9 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/psds/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/psds/fontawesome/css/all.min.css" />
-
     <link href="../../css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="/psds/css/common.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/psds/css/dashboard.css" />
+    <link href="/psds/css/dashboard.css" rel="stylesheet" />
   </head>
 <body>
 <%@include file="../../navbar.jsp"%>

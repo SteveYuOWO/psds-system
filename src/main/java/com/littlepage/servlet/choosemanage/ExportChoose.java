@@ -21,7 +21,6 @@ public class ExportChoose extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        req.getSession()
         List<FinalTableView> studentList = finalConfirmService.selectManageChoosesAlready();
         ServletOutputStream outputStream = resp.getOutputStream();
         resp.reset();

@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="/psds/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/psds/fontawesome/css/all.min.css" />
     <link href="../../css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/psds/css/common.css" rel="stylesheet" />
+    <link href="../../css/common.css" rel="stylesheet" />
     <link rel="stylesheet" href="/psds/css/dashboard.css" />
   </head>
 <body>
@@ -74,8 +74,8 @@
         </div>
         <!-- 表格 -->
         <div class="mtem-2">
-          <div class="minbox text-center plem-1 prem-1"><i class="fa fa-file-text-o prem-1"></i>待批志愿</div>
-          <table class="table text-center">
+            <div class="minbox text-center plem-1 prem-1"><i class="fa fa-file-text-o prem-1"></i>待批志愿</div>
+            <table class="table text-center">
             <thead>
               <tr>
                 <th>学号</th>
